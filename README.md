@@ -2,7 +2,7 @@
 
 *POPCORN* (**P**ropagated-**o**ut**p**ut **C**ertified R**o**bustness for **RN**Ns) is a general algorithm to certify robustness of recurrent neural networks (RNNs), including vanilla RNNs, LSTMs, and GRUs. It provides certified bounds for RNNs by bounding the non-linear activations in RNNs with linear functions. POPCORN is
 
-* **Novel** - it is a general framework, which is, to the best of our knowledge, the \textbf{first} work to provide a certified robustness evaluation for RNNs with robustness guarantees.
+* **Novel** - it is a general framework, which is, to the best of our knowledge, the **first** work to provide a certified robustness evaluation for RNNs with robustness guarantees.
 * **Effective** - it can handle complicated RNN structures besides vanilla RNNs, including LSTMs and GRUs that contain challenging coupled nonlinearities.
 * **Versatile** - it can be widely applied in applications including but not limited to computer vision, natural language processing, and speech recognition. Its robustness certification on individual steps in the input sequence can lead to new insights. 
 
