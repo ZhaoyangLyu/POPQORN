@@ -502,7 +502,7 @@ class RNN(nn.Module):
 
 if __name__ == '__main__':
     
-    parser = argparse.ArgumentParser(description = 'Compute Certified Bound for Vanilla RNN')
+    parser = argparse.ArgumentParser(description = 'Compute Certified Bound for Vanilla RNNs')
 
     parser.add_argument('--hidden-size', default = 64, type = int, metavar = 'HS',
                         help = 'hidden layer size (default: 64)')
@@ -510,7 +510,7 @@ if __name__ == '__main__':
                         help = 'number of slices to cut the 28*28 image into, it should be a factor of 28 (default: 7)')
     parser.add_argument('--activation', default = 'tanh', type = str, metavar = 'a',
                         help = 'nonlinearity used in the RNN, can be either tanh or relu (default: tanh)')
-    parser.add_argument('--work_dir', default = '../models/mnist_classifier/rnn_7_64_tanh/', type = str, metavar = 'WD',
+    parser.add_argument('--work-dir', default = '../models/mnist_classifier/rnn_7_64_tanh/', type = str, metavar = 'WD',
                         help = 'the directory where the pretrained model is stored and the place to save the computed result')
     parser.add_argument('--model-name', default = 'rnn', type = str, metavar = 'MN',
                         help = 'the name of the pretrained model (default: rnn)')
@@ -523,7 +523,7 @@ if __name__ == '__main__':
     parser.add_argument('--N', default = 100, type = int,
                         help = 'number of samples to compute bounds for (default: 100)')
     parser.add_argument('--p', default = 2, type = int,
-                        help = 'p norm, if p > 100, we will deem p = infinity (default: 100)')
+                        help = 'p norm, if p > 100, we will deem p = infinity (default: 2)')
     parser.add_argument('--eps0', default = 0.1, type = float,
                         help = 'the start value to search for epsilon (default: 0.1)')
     args = parser.parse_args()
@@ -538,6 +538,9 @@ if __name__ == '__main__':
     
     N = args.N  # number of samples to handle at a time.
     p = args.p  # p norm
+    if p > 100:
+        p = float('inf')
+
     eps0 = args.eps0
     input_size = int(28*28 / args.time_step)
     hidden_size = args.hidden_size
