@@ -72,5 +72,67 @@ The script will print the minimum, mean, maximum and standard deviation of the c
 
 You can compute bounds for different models by setting the values of the arguments **work_dir** and **model_name**. Also remember to set **hidden_size**, **time_step** and **activation** accordingly to make them consistent with your specifed pretrained model. 
 
-Experiment 2: Quantify Robustness for LSTM (Coming soon...)
+Experiment 2: Quantify Robustness for LSTM
 ------------------------------------------------------------
+All experiments of this part will be conducted in the folder `lstm`.
+```
+cd lstm
+```
+### Step 1: Train an LSTM News Title Classifier
+
+cd to the folder `NewsTitleClassification`.
+
+We will train an LSTM classifier on TagMyNews dataset. TagMyNews is a dataset consisting of 32,567 English news items grouped into 7 categories: Sport, Business, U.S., Health, Sci&Tech, World, and Entertainment. Each news item has a news title and a short description. We train an LSTM to classify the news items into the 7 categories according to their news titles.
+
+The news items have been preprocessed following the instructions in the github repo https://github.com/isthegeek/News-Classification. The processed data is stored in the file `test_data_pytorch.csv` and `train_data_pytorch.csv`.
+
+Before training the LSTM, run the following commands to install the dependencies.
+
+```
+pip install torchtext
+pip install spacy
+python -m spacy download en
+```
+
+Then run
+```
+python train_model.py
+```
+to train an LSTM classifier.
+
+Run
+```
+python train_model.py --cuda
+```
+if you want to enable gpu usage.
+
+The script will download the pretrained word embedding vector from “glove.6B.100d". By default, the trained LSTM will be saved as `POPQORN/models/news_title_classifier/lstm_hidden_size_32/lstm`.
+
+You can train more different LSTMs by changing the hidden size of the LSTM.
+
+### Step 2: Compute Certified Bound
+
+Next, for each news title, we will compute the untargeted POPQORN bound on every individual word, and call the words with minimal bounds sensitive words.​ 
+
+```
+cd ..
+```
+back to the folder `lstm`.
+
+Run
+```
+python bound_news_classification_lstm.py
+```
+to compute the certified bound. By default, this file will read the pretrained model `POPQORN/models/news_title_classifier/lstm_hidden_size_32/lstm`, randomly sample 128 news titles, and then compute certifed *l-2* balls for them (only for those images that are correctlly classified by the pretrained model). The script will save useful information to the diretory `POPQORN/models/news_title_classifier/lstm_hidden_size_32/2_norm`.
+The sampled news titles will be saved as `input`. The complete log of the computation process will be saved as `logs.txt` and the computed bound will be saved as `bound_eps`. 
+
+By default, the script will use 2D planes to bound the 2D nonlinear activations in the LSTM. You can also use 1D lines or constants to bound the 2D nonlinear activations by running the following:
+```
+python bound_news_classification_lstm.py --use-1D-line
+```
+or
+```
+python bound_news_classification_lstm.py --use-constant
+```
+
+You can also compute bounds for different models by setting the values of the arguments **work_dir** and **model_name**. Also remember to set **hidden_size** accordingly to make them consistent with your specifed pretrained model. 
