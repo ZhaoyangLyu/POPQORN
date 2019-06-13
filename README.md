@@ -13,6 +13,13 @@ Ching-Yun Ko\*, Zhaoyang Lyu\*, Tsui-Wei Weng, Luca Daniel, Ngai Wong and Dahua 
 
 \* Equal contribution
 
+Updates
+----------------------------------------------------------------
+
+- Jun 7, 2019: Initial release. Release the codes for quantifying robustness of vanilla RNNs and LSTMs.
+- To do: Add descriptions for experimental results.
+
+
 Setup
 ----------------------------------------------------------------
 
