@@ -9,7 +9,7 @@
 This repo intends to release code for our work:
 
 
-Ching-Yun Ko\*, Zhaoyang Lyu\*, Tsui-Wei Weng, Luca Daniel, Ngai Wong and Dahua Lin,"POPQORN: Quantifying Robustness of Recurrent Neural Networks", ICML 2019
+Ching-Yun Ko\*, Zhaoyang Lyu\*, Tsui-Wei Weng, Luca Daniel, Ngai Wong and Dahua Lin, ["POPQORN: Quantifying Robustness of Recurrent Neural Networks"](https://arxiv.org/abs/1905.07387), ICML 2019
 
 \* Equal contribution
 
