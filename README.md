@@ -130,7 +130,7 @@ Run
 ```
 python bound_news_classification_lstm.py
 ```
-to compute the certified bound. By default, this file will read the pretrained model `POPQORN/models/news_title_classifier/lstm_hidden_size_32/lstm`, randomly sample 128 news titles, and then compute certifed *l-2* balls for them (only for those images that are correctlly classified by the pretrained model). The script will save useful information to the diretory `POPQORN/models/news_title_classifier/lstm_hidden_size_32/2_norm`.
+to compute the certified bound. By default, this file will read the pretrained model `POPQORN/models/news_title_classifier/lstm_hidden_size_32/lstm`, randomly sample 128 news titles, and then compute certified *l-2* balls for them (only for those news that are correctlly classified by the pretrained model). The script will save useful information to the diretory `POPQORN/models/news_title_classifier/lstm_hidden_size_32/2_norm`.
 The sampled news titles will be saved as `input`. The complete log of the computation process will be saved as `logs.txt` and the computed bound will be saved as `bound_eps`. 
 
 By default, the script will use 2D planes to bound the 2D nonlinear activations in the LSTM. You can also use 1D lines or constants to bound the 2D nonlinear activations by running the following:
