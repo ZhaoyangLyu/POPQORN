@@ -13,6 +13,8 @@ Ching-Yun Ko\*, Zhaoyang Lyu\*, Tsui-Wei Weng, Luca Daniel, Ngai Wong and Dahua 
 
 \* Equal contribution
 
+The appendix of the paper is in the file `POPQORN/Appendix.pdf`.
+
 Updates
 ----------------------------------------------------------------
 
